@@ -1,8 +1,13 @@
 # sideTABLE
 
 A simple book wishlist and shelf management tool.
-[**Live Demo **](https://sidetable-v1.vercel.app/)
-[**Preview **](https://github.com/user-attachments/assets/f5ef757e-ad74-4906-be8d-99df591f62a6)
+-- 
+
+[Live Demo](https://sidetable-v1.vercel.app/)
+-- 
+[Preview](https://github.com/user-attachments/assets/f5ef757e-ad74-4906-be8d-99df591f62a6)
+--
+
 
 ## Features
 - **Smart Shelf Logic:** Organize books by status (Reading, Wishlist, Finished).
