@@ -1,0 +1,334 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .app-container {
+    @apply min-h-screen bg-[#FAF9F6] text-[#4A3F35] p-6 md:p-12 font-sans;
+  }
+
+  .header-wrapper {
+    @apply max-w-5xl mx-auto flex justify-between items-center mb-10;
+  }
+
+  .logo-text {
+    @apply text-5xl font-serif font-bold tracking-tighter text-[#2C241E];
+  }
+
+  .nav-icon {
+    @apply w-6 h-6 text-stone-400 cursor-pointer hover:text-amber-700 transition;
+  }
+
+  .add-book-form {
+    @apply max-w-5xl mx-auto mb-12 flex gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-100;
+  }
+
+  .main-grid {
+    @apply max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8;
+  }
+
+  /* Button Components */
+  .btn-primary {
+    @apply px-8 py-3 bg-stone-900 text-white rounded-xl font-semibold hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 bg-white border border-stone-200 rounded-full shadow-sm hover:shadow-md hover:bg-stone-50 transition-all;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-lg transition-colors;
+  }
+
+  .btn-icon-logout {
+    @apply p-2 rounded-lg transition-colors text-stone-400 hover:text-red-500 hover:bg-red-50;
+  }
+
+  .btn-ghost {
+    @apply flex-1 py-3 rounded-xl font-semibold text-stone-400 hover:bg-stone-50 transition;
+  }
+
+  /* Action Buttons */
+  .action-btn {
+    @apply p-1.5 rounded text-stone-600 hover:bg-stone-100 transition-colors;
+  }
+
+  .action-btn-move {
+    @apply p-1.5 rounded hover:bg-stone-100 text-stone-400 transition-colors;
+  }
+
+  /* Icon Badges */
+  .icon-badge {
+    @apply w-12 h-12 rounded-full flex items-center justify-center;
+  }
+
+  .error-icon-badge {
+    @apply w-12 h-12 rounded-full flex items-center justify-center bg-red-50 text-red-600 mx-auto mb-4;
+  }
+
+  .profile-icon-badge {
+    @apply w-8 h-8 rounded-full border border-stone-200;
+  }
+
+  /* Cards & Boxes */
+  .card-box {
+    @apply bg-white border rounded-2xl shadow-sm p-8;
+  }
+
+  .card-error {
+    @apply bg-white border-red-100 rounded-2xl shadow-sm p-8;
+  }
+
+  /* Toast Notifications */
+  .error-toast {
+    @apply bg-red-50 border border-red-200 rounded-xl p-4 shadow-lg text-red-700;
+  }
+
+  .toast-dismiss-btn {
+    @apply flex-shrink-0 p-1 hover:bg-red-100 rounded transition-colors;
+  }
+
+  /* Forms */
+  .form-input {
+    @apply flex-1 bg-transparent outline-none px-2;
+  }
+
+  .form-textarea {
+    @apply w-full h-32 p-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-emerald-100 resize-none outline-none text-stone-700;
+  }
+
+  .form-error {
+    @apply text-red-500 text-xs mt-2 px-2;
+  }
+
+  /* Star Rating */
+  .star-rating {
+    @apply flex gap-2 justify-center;
+  }
+
+  .star-button {
+    @apply transition-all transform hover:scale-110;
+  }
+
+  .star-filled {
+    @apply text-amber-400;
+  }
+
+  .star-empty {
+    @apply text-stone-200;
+  }
+
+  /* Review Box */
+  .review-box {
+    @apply mt-3 text-xs italic text-stone-500 bg-stone-50 p-2 rounded-lg border-l-2 border-emerald-300;
+  }
+
+  /* Login View */
+  .login-container {
+    @apply flex flex-col items-center justify-center h-screen bg-stone-50 p-6 text-center;
+  }
+
+  .login-icon-container {
+    @apply w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mb-6;
+  }
+
+  .login-title {
+    @apply text-3xl font-bold text-stone-900 mb-2;
+  }
+
+  .login-subtitle {
+    @apply text-stone-500 mb-8 max-w-xs;
+  }
+
+  .login-buttons-container {
+    @apply flex flex-col gap-4;
+  }
+
+  /* Grip Handle (Draggable) */
+  .grip-handle {
+    @apply mt-1 text-stone-300 cursor-grab active:cursor-grabbing;
+  }
+
+  /* Loading States */
+  .loading-text {
+    @apply h-screen flex items-center justify-center font-medium text-stone-400;
+  }
+
+  /* Modal Styles */
+  .modal-overlay {
+    @apply fixed inset-0 bg-stone-900/40 backdrop-blur-sm flex items-center justify-center z-50 p-4;
+  }
+
+  .modal-content {
+    @apply bg-white rounded-[2.5rem] p-8 max-w-md w-full shadow-2xl border border-stone-100 relative;
+  }
+
+  .modal-close-btn {
+    @apply absolute top-4 right-4 p-1 hover:bg-stone-100 rounded-lg transition text-stone-400 hover:text-stone-600;
+  }
+
+  .modal-title {
+    @apply text-2xl font-serif font-bold text-[#2C241E] mb-1 pr-8;
+  }
+
+  .modal-subtitle {
+    @apply text-stone-500 text-sm mb-6;
+  }
+
+  /* Shelves */
+  .shelf-container {
+    @apply space-y-4;
+  }
+
+  .shelf-title {
+    @apply flex items-center gap-2 font-bold tracking-widest text-[10px] uppercase text-stone-400;
+  }
+
+  .shelf-box {
+    @apply min-h-[450px] rounded-[2.5rem] border-2 p-5 transition-all duration-500;
+  }
+
+  .shelf-wishlist {
+    @apply border-dashed border-stone-200 bg-transparent;
+  }
+
+  .shelf-reading {
+    @apply bg-amber-50/30 border-amber-100/50 shadow-inner;
+  }
+
+  .shelf-finished {
+    @apply bg-stone-100/40 border-stone-200/60;
+  }
+
+  /* Book Card */
+  .book-card {
+    @apply bg-white p-5 rounded-2xl shadow-sm mb-3 border border-stone-100 hover:shadow-md transition-all;
+  }
+
+  .book-title {
+    @apply font-semibold text-[#2C241E];
+  }
+
+  .book-title-finished {
+    @apply font-semibold text-stone-300 line-through;
+  }
+
+  .book-meta {
+    @apply flex items-center gap-1 mt-1 text-amber-500;
+  }
+}
+
+
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
