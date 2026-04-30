@@ -12,7 +12,7 @@ import { useAuth } from './hooks/useAuth';
 
 export default function App() {
   
-  const { user, login, loginGuest, logout, loading : authLoading } = useAuth();
+  const { user, login, loginGuest, logout, loading : authLoading, isGuest } = useAuth();
   const { 
     books, booksByCategory, reviewingBook, tempReview, tempRating, error, actions, loading : booksLoading
   } = useBooks(user);
@@ -20,11 +20,24 @@ export default function App() {
   if (authLoading) return <LoadingSkeleton type="full" />;
   if (!user) return <LoginView onLogin={login} onGuestLogin={loginGuest} />;
 
+  //temporary for testing through guest login
+  const handleLogout = async () => {
+  if (isGuest) {
+    const confirm = window.confirm("Guest data will be deleted. Proceed?");
+    if (!confirm) return;
+    
+    // Clean up the database first
+    await actions.clearUserBooks();
+  }
+  
+  // Then sign out
+  await logout();
+};
 
 return (
     <div className="app-container">
       
-      <Header user={user} onLogout={logout} />
+      <Header user={user} onLogout={handleLogout} />
 
       <AddBookForm onAdd={actions.addBook} /> 
 

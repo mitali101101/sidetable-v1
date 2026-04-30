@@ -5,6 +5,7 @@ import { signInWithPopup, signInAnonymously, signOut, onAuthStateChanged, type U
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const isGuest = user?.isAnonymous || false;
 
   useEffect(() => {
     // Listen for login/logout events
@@ -27,5 +28,5 @@ export const useAuth = () => {
 
   const logout = () => signOut(auth);
 
-  return { user, loading, login, loginGuest, logout };
+  return { user, loading, login, loginGuest, logout, isGuest };
 };

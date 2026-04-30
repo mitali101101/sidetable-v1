@@ -3,7 +3,7 @@ import type { Book, Category } from '../types';
 import { CATEGORY_SEQUENCE } from '../constants';
 
 import { db } from '../lib/firebase';
-import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
+import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query, orderBy, serverTimestamp, where, getDocs, writeBatch } from 'firebase/firestore';
 import { type User } from 'firebase/auth';
 
 
@@ -55,6 +55,27 @@ export const useBooks = (user: User | null) => {
       return acc;
     }, {} as Record<Category, Book[]>);
   }, [books]);
+
+  //temporary for testing through guest login
+  const clearUserBooks = async () => {
+    if (!user) return;
+
+    try {
+      const q = query(collection(db, 'books'), where("userId", "==", user.uid));
+      const snapshot = await getDocs(q);
+      
+      // Using a batch is more efficient than individual deleteDoc calls
+      const batch = writeBatch(db);
+      snapshot.docs.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+      
+      await batch.commit();
+      console.log("Guest data cleared successfully.");
+    } catch (error) {
+      console.error("Error clearing books:", error);
+    }
+  };
 
   // --- ACTIONS API ---
   const actions = {
@@ -209,5 +230,5 @@ export const useBooks = (user: User | null) => {
     }
   }
 
-  return { books, booksByCategory, reviewingBook, tempReview, tempRating, error, actions, loading};
+  return { books, booksByCategory, reviewingBook, tempReview, tempRating, error, actions: { ...actions, clearUserBooks }, loading};
 };
